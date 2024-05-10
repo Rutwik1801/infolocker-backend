@@ -10,35 +10,29 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/infolocker")
 public class InformationController {
 
-        @Autowired
-        private InformationService informationService;
+    @Autowired
+    private InformationService informationService;
 
-        @GetMapping("/")
-        public List<Information> getAllInformations() {
-            return informationService.getAllInformations();
-        }
+    @GetMapping("/fetchAll")
+    public List<Information> getAllInformations() {
+        return informationService.getAllInformations();
+    }
 
-        @GetMapping("/{id}")
-        public Optional<Information> getInformationById(@PathVariable String id) {
-            return informationService.getInformationById(id);
-        }
-
-//        @PostMapping
-//        public Information createInformation(@RequestBody Information information) {
-//            return informationService.createInformation(information);
-//        }
-//
-//        @PutMapping("/{id}")
-//        public Information updateInformation(@PathVariable String id, @RequestBody Information information) {
-//            return informationService.updateInformation(id, information);
-//        }
-//
-//        @DeleteMapping("/{id}")
-//        public void deleteInformation(@PathVariable String id) {
-//            informationService.deleteInformation(id);
-//        }
-
+    @GetMapping("/fetch/{id}")
+    public Optional<Information> getInformationById(@PathVariable String id) {
+        return informationService.getInformationById(id);
+    }
+    @PostMapping("/addInformation")
+    public void addInformation(@RequestBody Information information) {
+        System.out.println(information);
+        informationService.addInformation(information);
+    }
+    @PostMapping("/updateInformation")
+    public void updateInformation(@RequestParam String userId, @RequestBody Information information) {
+        System.out.println(information);
+        informationService.updateInformation(userId,information);
+    }
 }
