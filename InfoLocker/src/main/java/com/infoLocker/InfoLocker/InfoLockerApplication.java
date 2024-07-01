@@ -18,5 +18,6 @@ public class InfoLockerApplication {
 		SpringApplication.run(InfoLockerApplication.class, args);
 	}
 
+	// Changes
 }
 
